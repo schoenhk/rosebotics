@@ -14,12 +14,16 @@ class StopAction(Enum):
     HOLD = 'hold'
 
 
-class Snatch3rRobot():
-    def __init__(self):
-        pass
+class Snatch3rRobot(object):
+    def __init__(self, left_wheel_port=ev3.OUTPUT_B, right_wheel_port=ev3.OUTPUT_C):
+        self.left_motor = Wheel(left_wheel_port)
+        self.right_motor = Wheel(right_wheel_port)
 
-    def go(self):
-        pass
+
+    def go(self, left_duty_cycle_percent, right_duty_cycle_percent):
+        self.left_motor.start_spinning(left_duty_cycle_percent)
+        self.right_motor.start_spinning(right_duty_cycle_percent)
+        
 
     def stop(self):
         pass
