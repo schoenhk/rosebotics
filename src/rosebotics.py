@@ -9,7 +9,6 @@ from enum import Enum
 import time
 
 
-
 class StopAction(Enum):
     COAST = 'coast'
     BRAKE = 'brake'
@@ -30,21 +29,6 @@ class Snatch3rRobot(object):
         self.left_wheel.stop_spinning(stop_action)
         self.right_wheel.stop_spinning(stop_action)
 
-    def move_forward(self, t, power):
-        wheel = self.right_wheel
-        wheel2 = self.left_wheel
-        wheel.start_spinning(power)
-        wheel2.start_spinning(power)
-        
-        time_init = time.time()
-        while True:
-            wheel.start_spinning(power)
-            wheel2.start_spinning(power)
-            if time.time() > time_init + t:
-                break
-        wheel.stop_spinning('brake')
-        wheel2.stop_spinning('brake')
-
     def spin(self, t, clockwise, power):
         if clockwise == 'clockwise'
             wheel = self.left_wheel
@@ -52,10 +36,10 @@ class Snatch3rRobot(object):
             wheel = self.right_wheel
 
 
-        time_init = time.time()
+        timeinit = time.time()
         while True :
             wheel.start_spinning(power)
-            if time.time() > time_init + t:
+            if time.time() > timeinit + t:
                 break
         wheel.stop_spinning('brake')
 
