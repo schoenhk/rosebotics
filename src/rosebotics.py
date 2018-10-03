@@ -31,18 +31,20 @@ class Snatch3rRobot(object):
 
     def spin(self, t, clockwise, power):
         if clockwise == 'clockwise'
-            wheel = self.left_wheel
+            wheel1 = self.left_wheel
+            wheel2 = self.right_wheel
             else
-            wheel = self.right_wheel
-
+            wheel1 = self.right_wheel
+            wheel2 = self.left_wheel
 
         timeinit = time.time()
         while True :
-            wheel.start_spinning(power)
+            wheel1.start_spinning(power)
+            wheel2.start_spinning(0 - power)
             if time.time() > timeinit + t:
                 break
-        wheel.stop_spinning('brake')
-
+        wheel1.stop_spinning('brake')
+        wheel2.stop_spinning('brake;)')
 
 class Wheel(object):
     def __init__(self, port, default_duty_cycle_percent=100,
