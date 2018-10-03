@@ -50,7 +50,7 @@ class Snatch3rRobot(object):
         if clockwise == 'clockwise':
             wheel1 = self.left_wheel
             wheel2 = self.right_wheel
-            else
+        else:
             wheel1 = self.right_wheel
             wheel2 = self.left_wheel
 
@@ -62,6 +62,19 @@ class Snatch3rRobot(object):
                 break
         wheel1.stop_spinning('brake')
         wheel2.stop_spinning('brake')
+
+        def turn(self, clockwise, power, N):
+            if clockwise == 'clockwise':
+                wheel = self.left_wheel
+            else:
+                wheel = self.right_wheel
+
+            t0 = time.time()
+            while True:
+                wheel.start_spinning(power)
+                if time.time() > t0 + N:
+                    break
+            wheel.stop_spinning('brake')
 
 class Wheel(object):
     def __init__(self, port, default_duty_cycle_percent=100,
