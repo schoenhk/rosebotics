@@ -44,6 +44,7 @@ class Snatch3rRobot(object):
                 break
         wheel.stop_spinning('brake')
         wheel2.stop_spinning('brake')
+        
 
     def spin(self, t, clockwise, power):
         if clockwise == 'clockwise'
